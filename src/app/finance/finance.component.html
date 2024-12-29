@@ -1,0 +1,33 @@
+<main>
+  <h1>Finance News</h1>
+
+  <div id="tradingview-widget" class="tradingview-widget-container"></div>
+
+
+  <div *ngIf="financeNews.length === 0" class="loading">Loading...</div>
+
+
+  <div class="news-grid">
+    <div *ngFor="let article of pagedArticles" class="news-card">
+      <img *ngIf="article.urlToImage" [src]="article.urlToImage" alt="{{ article.title }}" class="news-image" />
+      <div class="news-content">
+        <h2 class="news-title">{{ article.title }}</h2>
+        <p class="news-source">Source: {{ article.source?.name || 'Unknown' }}</p>
+        <p class="news-description">{{ article.description || 'No description available.' }}</p>
+        <a [href]="article.url" target="_blank" class="read-more">Read more</a>
+        <p class="news-date">Published on: {{ article.publishedAt | date:'medium' }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="pagination">
+    <button (click)="changePage(1)" [disabled]="currentPage === 1">First</button>
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    <button (click)="changePage(totalPages)" [disabled]="currentPage === totalPages">Last</button>
+  </div>
+
+  <span class="pagination-info">
+    Page {{ currentPage }} of {{ totalPages }}
+  </span>
+</main>

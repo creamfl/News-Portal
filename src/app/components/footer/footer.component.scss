@@ -1,0 +1,43 @@
+.footer {
+  background-color: rgba(51, 51, 51, 0.8);
+
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  backdrop-filter: blur(10px);
+
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    a {
+      color: #ff9900;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ffcc33;
+      }
+    }
+
+    .footer-social {
+      margin-top: 10px;
+
+      a {
+        margin: 0 10px;
+        font-size: 18px;
+        color: white;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #ff9900;
+        }
+      }
+    }
+  }
+}

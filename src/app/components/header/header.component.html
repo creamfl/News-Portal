@@ -1,0 +1,30 @@
+<header>
+  <nav>
+    <div class="logo" routerLink="/">{{ title() }}</div>
+    <ul class="categories">
+      <li><a routerLink="/breaking-news" routerLinkActive="active">Breaking News</a></li>
+      <li><a routerLink="/sports-news" routerLinkActive="active">Sports</a></li>
+      <li><a routerLink="/politics-news" routerLinkActive="active">Politics</a></li>
+      <li><a routerLink="/entertainment-news" routerLinkActive="active">Entertainment</a></li>
+      <li><a routerLink="/finance" routerLinkActive="active">Finances</a></li>
+    </ul>
+    <div class="search-bar">
+      <input
+        [(ngModel)]="searchQuery"
+        type="text"
+        (keydown.enter)="searchNews()"
+        placeholder="Search news..."
+      />
+      <div>
+        <a
+          [routerLink]="['/search']"
+          [queryParams]="{ q: searchQuery }"
+          class="search-button"
+          (click)="searchNews()"
+        >
+          Search
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

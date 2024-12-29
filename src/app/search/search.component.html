@@ -1,0 +1,42 @@
+<main>
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+
+  <div *ngIf="!isLoading && errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <h1>Search Results for: "{{ searchQuery }}"</h1>
+
+  <div *ngIf="!isLoading && filteredNews.length > 0; else noResults" class="news-grid">
+    <div *ngFor="let news of pagedArticles" class="news-card">
+      <img 
+        *ngIf="news.urlToImage" 
+        [src]="news.urlToImage" 
+        alt="{{ news.title }}" 
+        class="news-image" 
+      />
+      <div class="news-content">
+        <h2 class="news-title">{{ news.title }}</h2>
+        <p class="news-source">Source: {{ news.source?.name || 'Unknown' }}</p>
+        <p class="news-description">{{ news.description || 'No description available.' }}</p>
+        <a [href]="news.url" target="_blank" class="read-more">Read more</a>
+        <p class="news-date">Published on: {{ news.publishedAt | date:'medium' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noResults>
+    <p>No results found for "{{ searchQuery }}". Try another search term.</p>
+  </ng-template>
+
+  <div *ngIf="filteredNews.length > 0" class="pagination">
+    <button (click)="changePage(1)" [disabled]="currentPage === 1">First</button>
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    <button (click)="changePage(totalPages)" [disabled]="currentPage === totalPages">Last</button>
+  </div>
+
+  <span class="pagination-info">
+    Page {{ currentPage }} of {{ totalPages }}
+  </span>
+</main>

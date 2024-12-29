@@ -1,0 +1,118 @@
+$font-roboto: "Roboto", sans-serif;
+
+header {
+  font-family: $font-roboto;
+  display: flex;
+  padding-inline: 24px;
+  padding-block: 18px;
+  background-color: rgba(51, 51, 51, 0.8);
+  color: white;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff9900;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .categories {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        font-size: 1rem;
+        letter-spacing: 0.3px;
+        color: white;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.3s ease;
+
+        a {
+          color: inherit;
+          text-decoration: none;
+          display: inline-block;
+          padding: 4px 0;
+          transition: color 0.3s ease;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ff9900;
+            transition: width 0.3s ease;
+          }
+
+          &:hover {
+            color: #ff9900;
+
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+
+        &:hover {
+          color: #ff9900;
+        }
+      }
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      input {
+        padding: 4px 8px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        color: #333;
+
+        &:focus {
+          outline: 2px solid #ff9900;
+        }
+      }
+
+      div {
+        padding: 4px 8px;
+        background-color: #ff9900;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        a {
+          text-decoration: none;
+          color: #fff;
+        }
+
+        &:hover {
+          background-color: #e68a00;
+        }
+      }
+    }
+  }
+}
